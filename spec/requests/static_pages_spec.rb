@@ -10,9 +10,14 @@ describe "Static pages" do
 			expect(page).to have_content('Sample App')
 		end
 
-		it "should contain in title 'Home'" do
+		it "should have base title only" do
 			visit '/static_pages/home'
-			expect(page).to have_title("#{base_title} | Home")
+			expect(page).to have_title('Ruby on Rails Tutorial Sample App')
+		end
+
+		it "shouldn't contain specific title" do
+			visit '/static_pages/home'
+			expect(page).not_to have_title("| Home")
 		end
 	end
 	describe "Help page" do
